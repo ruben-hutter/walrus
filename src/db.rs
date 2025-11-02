@@ -28,17 +28,9 @@ pub fn init_db() -> Result<Connection> {
         [],
     )?;
 
-    conn.execute(
-        "CREATE TABLE IF NOT EXISTS target (
-            id INTEGER PRIMARY KEY CHECK (id = 1),
-            hours REAL NOT NULL,
-            target_date TEXT
-        )",
-        [],
-    )?;
-
     if is_new {
         println!("Database created at: {}", db_path.display());
     }
+
     Ok(conn)
 }
